@@ -225,6 +225,13 @@
   \setcounter{subquestioncounter}{1} % reinit the local counter
 }
 
+\newenvironment{questionExamBlock}[2][]{%
+  \par\noindent\begin{minipage}{\linewidth}%
+  \StrLen{#1}[\argOneSize]%
+  \ifthenelse{\argOneSize > 0}{\questionExam{#2}[#1]}{\questionExam{#2}}%
+}
+{\end{minipage}}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Exercice
