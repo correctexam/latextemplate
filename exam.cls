@@ -59,6 +59,9 @@
 \RequirePackage{adjustbox}
 \RequirePackage{refcount}
 % \RequirePackage{tikz}
+\RequirePackage{titlesec}
+
+\titlespacing*{\section} {0pt}{0ex}{0ex}
 
 \linespread{1.05}
 
@@ -235,7 +238,7 @@
   \StrLen{#2}[\mystringlen]%
   \ifthenelse{\mystringlen > 0}{\def\@temp{-- #2}}{\def\@temp{}}%
   \vspace{0.3cm}
-  \noindent\textbf{\Large Exercice \arabic{QE} \@temp{} ($\approx$ #1 points)}%
+  \section*{Exercice \arabic{QE} \@temp{} ($\approx$ #1 points)}
   \setcounter{tempe}{\arabic{QE}}%
   \stepcounter{QE}%
   \vspace{0.3cm}
