@@ -163,4 +163,13 @@ You can also write some text with inline boxes \inlineAnswerBox{} that students 
 \end{center}
 }
 
+
+% Questions can also be created with an environment.
+% This ensures the question will be displayed on the same page as the environment content.
+% For instance, this can be used to avoid starting a new page on an answer box.
+\begin{questionExamBlock}{\lipsum[5]}
+	\answerExam[white]{1.5}{18}{1}
+\end{questionExamBlock}
+
+
 \end{document}
