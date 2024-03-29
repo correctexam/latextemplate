@@ -31,10 +31,9 @@
 \RequirePackage{xkeyval}
 \LoadClass{article}
 
-\newif\if@headerWithID
-\@headerWithIDfalse
+\newif\ifheaderWithID
 
-\DeclareOptionX{withid}{\@headerWithIDtrue}
+\DeclareOptionX{withid}{\headerWithIDtrue}
 \ProcessOptionsX
 
 \RequirePackage{zref-savepos}
@@ -122,10 +121,10 @@
   \begin{tabular}{rl}
     \textbf{\small NOM :} & \zsavepos{lastnamebox}\multido{}{\nbBoxesHeaderLine}{~\boxStudentID}\\
     \textbf{\small PRÉNOM :} & \zsavepos{firstnamebox}\multido{}{\nbBoxesHeaderLine}{~\boxStudentID}\\
-    \if@headerWithID \textbf{\small NUM ETD :} & \zsavepos{stdidbox}\multido{}{\nbBoxesHeaderLine}{~\boxStudentID} \else \\  \fi
+    \ifheaderWithID \textbf{\small NUM ETD :} & \zsavepos{stdidbox}\multido{}{\nbBoxesHeaderLine}{~\boxStudentID} \else \\  \fi
   \end{tabular}
 }%
-\if@headerWithID%
+\ifheaderWithID%
   \ifbool{firstIdBoxDone}{}{%
     \pdfinfo{/correctexam-stdid %
     (%
