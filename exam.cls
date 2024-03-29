@@ -32,8 +32,9 @@
 \LoadClass{article}
 
 \newif\ifheaderWithID
+\newcommand{\nbBoxesStudentID}{}
 
-\DeclareOptionX{withid}{\headerWithIDtrue}
+\DeclareOptionX{withid}[19]{\headerWithIDtrue\renewcommand{\nbBoxesStudentID}{#1}}
 \ProcessOptionsX
 
 \RequirePackage{zref-savepos}
@@ -121,7 +122,7 @@
   \begin{tabular}{rl}
     \textbf{\small NOM :} & \zsavepos{lastnamebox}\multido{}{\nbBoxesHeaderLine}{~\boxStudentID}\\
     \textbf{\small PRÉNOM :} & \zsavepos{firstnamebox}\multido{}{\nbBoxesHeaderLine}{~\boxStudentID}\\
-    \ifheaderWithID \textbf{\small NUM ETD :} & \zsavepos{stdidbox}\multido{}{\nbBoxesHeaderLine}{~\boxStudentID} \else \\  \fi
+    \ifheaderWithID \textbf{\small NUM ETD :} & \zsavepos{stdidbox}\multido{}{\nbBoxesStudentID}{~\boxStudentID} \else \\  \fi
   \end{tabular}
 }%
 \ifheaderWithID%
