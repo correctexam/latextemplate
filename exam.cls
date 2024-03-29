@@ -305,7 +305,6 @@
 \newcommand{\answerExam}[4][black]{%
 % Getting the count value of the current question
 \setcounter{tempq}{\arabic{Q}}%
-\addtocounter{tempq}{-1}%
 
 % setting the dot color
 \renewcommand{\answerExamDotColor}{#1}%
@@ -378,7 +377,6 @@
 \newcommand{\answerExamContent}[1]{%
 % Getting the count value of the current question
 \setcounter{tempq}{\arabic{Q}}%
-\addtocounter{tempq}{-1}%
 % Simulation for getting the height of the box
 \settototalheight{\heighOfBox}{\fbox{\parbox{\textwidth}{%
   \noindent\rule{0pt}{1.5\baselineskip}%
@@ -423,7 +421,6 @@
 \newcommand{\inlineAnswerBox}[1][10]{%
 % Getting the count value of the current question
 \setcounter{tempq}{\arabic{Q}}%
-\addtocounter{tempq}{-1}%
 %
 \fpSub{\spacestoinclude}{#1}{1}%
 %% Computing the dimensions of ID boxes
