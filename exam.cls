@@ -201,7 +201,6 @@
 % Question
 
 \newcounter{Q}
-\refstepcounter{Q}
 
 % Temp counter used in answer box for questions
 \newcounter{tempq}
@@ -217,12 +216,13 @@
 \newcommand{\questionExam}[2][]{%
   % #1: optional label for the question
   % #2: the question text
+
+  % Writing the question text
+  \smallskip%
+  \noindent\refstepcounter{Q}\textbf{Q.\arabic{Q}}~#2%
   % Registering the label if provided
   \StrLen{#1}[\mystringlen]%
   \ifthenelse{\mystringlen > 0}{\label[question]{#1}}%
-  % Writing the question text
-  \smallskip%
-  \noindent\textbf{Q.\arabic{Q}}\refstepcounter{Q}~#2%
   \medskip%
   \setcounter{subquestioncounter}{1} % reinit the local counter
 }

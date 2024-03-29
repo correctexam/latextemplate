@@ -164,12 +164,19 @@ You can also write some text with inline boxes \inlineAnswerBox{} that students 
 }
 
 
-% Questions can also be created with an environment.
+% Questions can also be created with a questionExamBlock environment.
 % This ensures the question will be displayed on the same page as the environment content.
 % For instance, this can be used to avoid starting a new page on an answer box.
 \begin{questionExamBlock}{\lipsum[5]}
 	\answerExam[white]{1.5}{18}{1}
 \end{questionExamBlock}
+
+% Similar to regular questions, a label can be set on a questionExamBlock.
+\begin{questionExamBlock}[q.otherlabel]{\lipsum[6][1]}
+	\answerExam[white]{1.5}{10}{1}
+\end{questionExamBlock}
+
+\textbf{Reference to \cref{q.otherlabel}}
 
 
 \end{document}
