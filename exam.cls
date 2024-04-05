@@ -201,7 +201,6 @@
 % Question
 
 \newcounter{Q}
-\refstepcounter{Q}
 
 % Temp counter used in answer box for questions
 \newcounter{tempq}
@@ -217,12 +216,13 @@
 \newcommand{\questionExam}[2][]{%
   % #1: optional label for the question
   % #2: the question text
+
+  % Writing the question text
+  \smallskip%
+  \noindent\refstepcounter{Q}\textbf{Q.\arabic{Q}}~#2%
   % Registering the label if provided
   \StrLen{#1}[\mystringlen]%
   \ifthenelse{\mystringlen > 0}{\label[question]{#1}}%
-  % Writing the question text
-  \smallskip%
-  \noindent\textbf{Q.\arabic{Q}}\refstepcounter{Q}~#2%
   \medskip%
   \setcounter{subquestioncounter}{1} % reinit the local counter
 }
@@ -305,7 +305,6 @@
 \newcommand{\answerExam}[4][black]{%
 % Getting the count value of the current question
 \setcounter{tempq}{\arabic{Q}}%
-\addtocounter{tempq}{-1}%
 
 % setting the dot color
 \renewcommand{\answerExamDotColor}{#1}%
@@ -378,7 +377,6 @@
 \newcommand{\answerExamContent}[1]{%
 % Getting the count value of the current question
 \setcounter{tempq}{\arabic{Q}}%
-\addtocounter{tempq}{-1}%
 % Simulation for getting the height of the box
 \settototalheight{\heighOfBox}{\fbox{\parbox{\textwidth}{%
   \noindent\rule{0pt}{1.5\baselineskip}%
@@ -423,7 +421,6 @@
 \newcommand{\inlineAnswerBox}[1][10]{%
 % Getting the count value of the current question
 \setcounter{tempq}{\arabic{Q}}%
-\addtocounter{tempq}{-1}%
 %
 \fpSub{\spacestoinclude}{#1}{1}%
 %% Computing the dimensions of ID boxes
