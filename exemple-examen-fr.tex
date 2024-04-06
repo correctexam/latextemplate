@@ -1,31 +1,33 @@
-% Options:
-% withid: adds a header line for writing the student's ID (if a value is given, will limit the amount of boxes)
-% We recommend to keep the twoside option as it permits to add a specific header (student' name) on each new page.
-\documentclass[a4paper,twoside,withid=8]{correctexam}
+% Options~:
+% withid : ajoute une ligne d'en-tête pour écrire l'identifiant de l'étudiant (si une valeur est donnée, cela limitera le nombre de cases)
+% anonymous : remplace les champs de nom et id par un numéro d'anonymat (si une valeur est donnée, cela limitera le nombre de cases)
+%
+% Nous recommandons de conserver l'option recto-verso car elle permet d'ajouter un en-tête spécifique (nom de l'étudiant) sur chaque nouvelle page.
 
-% packages already loaded: graphicx, geometry, listings, lastpage, fancyhdr, xcolor, mathpazo, ifthen, xstring, qcm, enumitem, etoolbox, cleveref
+\documentclass[a4paper,twoside,withid=8]{correctexam}
+% paquets latex déjà chargés~: graphicx, geometry, listings, lastpage, fancyhdr, xcolor, mathpazo, ifthen, xstring, qcm, enumitem, etoolbox, cleveref
 
 \usepackage[T1]{fontenc}
 \usepackage[final,activate={true,nocompatibility},kerning=true,spacing=true]{microtype}
 \usepackage[english,french]{babel}
 \usepackage[scaled=0.9]{DejaVuSansMono}
-\usepackage{lipsum} % For demo. To remove
+\usepackage{lipsum} % Seulement pour l'example, vous pouvez supprimer cette ligne
 \usepackage{tikz}
 
-% You can adjust the line spread of the font used in this document (mathpazo).
-%\linespread{1.05}
+% Pour ajuster l'interligne de la police utilisée dans ce document (mathpazo).
+% \linespread{1.05}
 
-% You can override the default page dimensions, mainly left and right (touching the other parameters may break the template):
-%\geometry{bottom=0.5cm, top=-1cm, left=1.3cm, right=1.3cm, headheight=5cm, includefoot, includehead}
+% Pour modifier les dimensions par défaut de la page, principalement la gauche et la droite (attention, modifier les autres paramètres risque de casser la présentation) :
+% \geometry{bottom=0.5cm, top=-1cm, left=1.3cm, right=1.3cm, headheight=5cm, includefoot, includehead}
 
-% You can customise the centered footpage:
+% Pour personnaliser le pied de page~: 
 %\cfoot[\large\thepage~~/~~\pageref{LastPage}]{\large\thepage~~/~~\pageref{LastPage}}
-% but do not change the \lhead, \rhead, \lfoot, \rfoot, and \chead as they are used for page detection and IDs
+%
+% Ne modifiez pas \lhead, \rhead, \lfoot, \rfoot ni \chead, parce qu'ils sont utilisés pour détecter les identifiants
 
-% CAUTION: this class sets the 'fboxsep' length to '0', which breaks spacing in the '\fbox' command.
-% This affects packages that rely on '\fbox', such as the 'minted' package with the 'frame' option'
-% A fix for 'minted' is to set 'framesep=5pt' to replace the missing spacing.
-
+% ATTENTION~: La classe "exam" assigne la longueur '0' à la variable 'fboxsep', ce qui casse l'espacement de la commande '\fbox'.
+% Cela affecte les paquets qui dépendent de '\fbox', comme 'minted' avec l'option 'frame'
+% Une solution de contournement pour 'minted' est de mettre 'framesep=5pt' pour remplacer l'espacement manquant.
 
 \title{\vspace*{-1cm}\huge Titre}
 \author{2022-2023\\[0.1cm]
@@ -39,15 +41,17 @@ Sujet écrit sur \pageref{LastPage} pages
 \begin{document}
 
 
-% Creates the exam header
+% Création de l'en-tête de l'examen
 \maketitle
 
-% The template contains several exam commands:
-% \exerciceExam{number}{title} creates a section dedicated to a given exercice. Replace 'number' by the number of points of the exam. 'title' is the title of the exercice (if no title, do not forget to put {})
-
-% \questionExam{text} creates a numbered question. Replace 'text' by the title of the question.
-
-% \begin{qcmExam}\end{qcmExam} creates a QCM environment
+% La classe examen contient plusieurs commandes spécifiques~:
+% - "\exerciceExam{nombre}{titre}" : crée une section dédiée à un exercice. 
+%                                    Remplacez 'nombre' par le nombre de points de l'exercice. 
+%                                    Remplacez 'titre' par le titre de l'exercice (s'il n'y a pas de titre, n'oubliez pas de mettre {})
+% - "\questionExam{text}" : crée une question numérotée. Remplacez "texte" par l'entitulé de la question.
+% - "\begin{qcmExam} 
+%       (...) 
+%    \end{qcmExam}" : crée un environement QCM
 
 
 \noindent\fbox{\parbox{\textwidth}{%
@@ -71,6 +75,12 @@ N'oubliez pas de mettre votre nom sur chaque page.}%
 % Second parameter: the line spacing
 % Third argument: the number of lines
 % Fourth argument: the number of columns
+
+
+% Argument optionnel ~: la couleur des points (noir par défaut). Mettre blanc pour aucun point.
+% Deuxième argument~: l'espacement des lignes
+% Troisième argument~: le nombre de lignes
+% Quatrième argument~: le nombre de colonnes
 \answerExam[gray]{1.5}{2}{1}
 
 \questionExam{\lipsum[1][2]}
@@ -82,27 +92,29 @@ N'oubliez pas de mettre votre nom sur chaque page.}%
 \exerciceExam{4}{}
 
 
-% A question can have a label:
+% Les questions peuvent avoir des étiquettes~:
 \questionExam[q.mylabel]{\lipsum[1][3]}
 
-% You can use the question's label like this:
-\textbf{Reference to \cref{q.mylabel}}
-% Warning: there is an issue when using question's label and section/sub-section.
+% Pour faire référence à une étiquette 
+\textbf{Référence à \cref{q.mylabel}}
+% Avertissement~: il y a un problème lors de l'utilisation de l'étiquette de la question et de la section/sous-section.
 
 \answerExam[white]{1.5}{8}{1}
 
 \newpage
 
-% \inlineAnswerBox as one argument: the length of the box (computed in number of characters). By default 10 characters.
-% You can change the size of the answer box with text size commands: {\Large \inlineAnswerBox{}}
-\questionExam{Complete the following text:}
+% \inlineAnswerBox en un seul argument : la longueur de l'encadré (calculée en nombre de caractères). Par défaut, 10 caractères.
+% Vous pouvez modifier la taille de la boîte de réponse à l'aide des commandes de format de texte : {\Large \inlineAnswerBox{}}
+\questionExam{Complétez le texte suivant~:}
 
-You can also write some text with inline boxes \inlineAnswerBox{} that students must complete \inlineAnswerBox[5]{}.
+Vous pouvez également écrire du texte dans des encadrés \inlineAnswerBox{}, que les étudiants doivent compléter \inlineAnswerBox[5]{}.
 
 \answerExam[white]{1.5}{8}{1}
 
-% Be careful, if you use inlineAnswerBox inside a questionExam, you have to manually reinit the sub-question counter:
-\questionExam{\setcounter{subquestioncounter}{1}You can also write some text with inline boxes \inlineAnswerBox{} that students must complete \inlineAnswerBox[5]{}.}
+% Attention, si vous utilisez 'inlineAnswerBox' à l'intérieur d'une 'questionExam', vous devez réinitialiser manuellement le compteur de sous-questions~:
+
+
+\questionExam{\setcounter{subquestioncounter}{1} Vous pouvez également écrire du texte dans des encadrés \inlineAnswerBox{}, que les étudiants doivent compléter \inlineAnswerBox[5]{}.}
 
 
 \exerciceExam{8}{}
@@ -138,7 +150,7 @@ You can also write some text with inline boxes \inlineAnswerBox{} that students 
 
 
 
-% You can also create an answer box with a picture or some text, or code (lstlistings does not work here) to complete inside the box:
+% Vous pouvez également créer un encadré de réponse avec une image, un texte ou un code ('lstlistings' ne fonctionne pas ici) à compléter à l'intérieur de l'encadré~:
 \answerExamContent{%
 ~\\
 \hspace*{0.2cm}\texttt{void saisirEspece (}
@@ -166,20 +178,19 @@ You can also write some text with inline boxes \inlineAnswerBox{} that students 
 \end{center}
 }
 
-
-% Questions can also be created with a questionExamBlock environment.
-% This ensures the question will be displayed on the same page as the environment content.
-% For instance, this can be used to avoid starting a new page on an answer box.
+% Les questions peuvent également être créées avec un environnement 'questionExamBlock'.
+% Cela garantit que la question sera affichée sur la même page que le contenu de l'environnement.
+% Par exemple, cela peut être utilisé pour éviter de démarrer une nouvelle page sur un ecnadré de réponse.
 \begin{questionExamBlock}{\lipsum[5]}
 	\answerExam[white]{1.5}{18}{1}
 \end{questionExamBlock}
 
-% Similar to regular questions, a label can be set on a questionExamBlock.
+% Comme pour les questions ordinaires, il est possible de définir une étiquette sur un bloc 'questionExamBlock'.
 \begin{questionExamBlock}[q.otherlabel]{\lipsum[6][1]}
 	\answerExam[white]{1.5}{10}{1}
 \end{questionExamBlock}
 
-\textbf{Reference to \cref{q.otherlabel}}
+\textbf{Référence à \cref{q.otherlabel}}
 
 
 \end{document}
