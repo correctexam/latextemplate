@@ -1,7 +1,10 @@
 % Options:
-% withid: adds a header line for writing the student's ID (if a value is given, will limit the amount of boxes)
-% We recommend to keep the twoside option as it permits to add a specific header (student' name) on each new page.
-\documentclass[a4paper,twoside,withid=8]{exam}
+% withid: adds a header line for writing the student's ID (if a value is given, will limit the number of boxes)
+% anonymous: replaces student name fieds by an anonimity number (if a value is given, it specifies the number of boxes)
+%
+% We recommend to keep the twoside option as it allows to add a specific header (student' name) on each new page.
+\documentclass[a4paper,twoside,anonymous]{exam}
+%\documentclass[a4paper,twoside,withid=8]{exam}
 
 % packages already loaded: graphicx, geometry, listings, lastpage, fancyhdr, xcolor, mathpazo, ifthen, xstring, qcm, enumitem, etoolbox, cleveref
 
@@ -43,17 +46,17 @@ This exam has \pageref{LastPage} pages
 \maketitle
 
 % The template contains several exam commands:
-% \exerciceExam{number}{title} creates a section dedicated to a given exercice. Replace 'number' by the number of points of the exam. 'title' is the title of the exercice (if no title, do not forget to put {})
+% \exerciceExam{number}{title} creates a section dedicated to a given exercice. Replace 'number' by the number of points of the exercise, 'title' is the title of the exercice (if no title, do not forget to put {})
 
 % \questionExam{text} creates a numbered question. Replace 'text' by the title of the question.
 
 % \begin{qcmExam}\end{qcmExam} creates a QCM environment
 
+\begin{center}
+\noindent\fbox{\parbox{\textwidth}{\centering\textbf{Write your answers directly inside the reply boxes, in this examen sheet. \\
+Do not go beyond these areas. Do not forget to write your name on each sheet.}}} 
+\end{center}
 
-\noindent\fbox{\parbox{\textwidth}{%
-\textbf{Write your answers directly inside the reply boxes, in this examen sheet. Do not go beyond these areas.
-Don't forget to put your name on each sheet.}%
-}}
 
 \exerciceExam{5}{}
 
@@ -68,7 +71,7 @@ Don't forget to put your name on each sheet.}%
 \questionExam{\lipsum[1][1]}
 
 % First argument: color (optional, by default black). The color of the dots. Put white for no dot.
-% Second parameter: the line spacing
+% Second argument: the line spacing
 % Third argument: the number of lines
 % Fourth argument: the number of columns
 \answerExam[gray]{1.5}{2}{1}
