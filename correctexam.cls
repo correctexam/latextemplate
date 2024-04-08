@@ -25,7 +25,7 @@
 %% - fixed: student if boxes color changed to lightgray
 %% - fixed: do not compile when defining a first command with a label
 %% - fixed: better alignment of student IDs in the header
-\ProvidesClass{exam}
+\ProvidesClass{correctexam}
               [2023/30/09 v1.4.0
  correctexam LaTeX document class]
 \RequirePackage{xkeyval}
