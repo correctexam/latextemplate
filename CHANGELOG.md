@@ -13,15 +13,22 @@
 
 ## v1.5.0
 
+### Changed 
+
 - fixed: not able to use vspace in answerExamContent
 - fixed: the provided example using answerExamContent was not good
+
+### Added 
 - feat: the PDF metadata now contains exercise ID
 
 ##  v1.4.0
 
+
 - new: new command 'answerExamContent'
 
 ## v1.3.0
+
+### Changed
 
 - fixed: json metadata must use double quotes
 - fixed: json metadata must contain the pages
@@ -30,16 +37,26 @@
 
 ## v1.2.0
 
+### Changed
+
 - fixed: ID cells enlarged
 
 ## v1.1.0
 
+### Changed
+
 - change: QCM are not more double inner qcmExam
-          environments. See the example to adapt your code
-- feat: add metadata related to: the answer zones
-        of questions; student ids
+       environments. See the example to adapt your code
 - fixed: bad numbering QCMs
 - fixed: bad dimensions of boxes on multi-column
 - fixed: student if boxes color changed to lightgray
 - fixed: do not compile when defining a first command with a label
 - fixed: better alignment of student IDs in the header
+
+### Added
+
+- feat: add metadata related to: the answer zones
+     of questions; student ids
+
+
+
