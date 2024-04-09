@@ -3,8 +3,8 @@
 % anonymous : remplace les champs de nom et id par un numéro d'anonymat (si une valeur est donnée, cela limitera le nombre de cases)
 %
 % Nous recommandons de conserver l'option recto-verso car elle permet d'ajouter un en-tête spécifique (nom de l'étudiant) sur chaque nouvelle page.
-
 \documentclass[a4paper,twoside,withid=8]{correctexam}
+% \documentclass[a4paper,twoside,anonymous]{correctexam}
 % paquets latex déjà chargés~: graphicx, geometry, listings, lastpage, fancyhdr, xcolor, mathpazo, ifthen, xstring, qcm, enumitem, etoolbox, cleveref
 
 \usepackage[T1]{fontenc}
@@ -25,7 +25,7 @@
 %
 % Ne modifiez pas \lhead, \rhead, \lfoot, \rfoot ni \chead, parce qu'ils sont utilisés pour détecter les identifiants
 
-% ATTENTION~: La classe "exam" assigne la longueur '0' à la variable 'fboxsep', ce qui casse l'espacement de la commande '\fbox'.
+% ATTENTION~: La classe "correctexam" assigne la longueur '0' à la variable 'fboxsep', ce qui casse l'espacement de la commande '\fbox'.
 % Cela affecte les paquets qui dépendent de '\fbox', comme 'minted' avec l'option 'frame'
 % Une solution de contournement pour 'minted' est de mettre 'framesep=5pt' pour remplacer l'espacement manquant.
 
