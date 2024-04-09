@@ -1,7 +1,7 @@
-%% Copyright Arnaud Blouin 2023
+%% Copyright CorrectExam 2023
 %% This file extends the standard class 'article' for
 %% being used within the app correctexam.
-\ProvidesClass{exam}
+\ProvidesClass{correctexam}
               [2023/30/09 v1.4.0
  correctexam LaTeX document class]
 \RequirePackage{xkeyval}
