@@ -10,6 +10,10 @@
 \newif\ifheaderWithID
 \newcommand{\nbBoxesStudentID}{}
 
+\newif\ifanonymousExamen
+\newcommand{\nbBoxesAnonimityNumber}{}
+
+\DeclareOptionX{anonymous}[4]{\anonymousExamentrue\renewcommand{\nbBoxesAnonimityNumber}{#1}}
 \DeclareOptionX{withid}[19]{\headerWithIDtrue\renewcommand{\nbBoxesStudentID}{#1}}
 \ProcessOptionsX
 
@@ -96,9 +100,13 @@
 {%
   \setlength{\tabcolsep}{0.2em}%
   \begin{tabular}{rl}
-    \textbf{\small NOM :} & \zsavepos{lastnamebox}\multido{}{\nbBoxesHeaderLine}{~\boxStudentID}\\
-    \textbf{\small PRÉNOM :} & \zsavepos{firstnamebox}\multido{}{\nbBoxesHeaderLine}{~\boxStudentID}\\
-    \ifheaderWithID \textbf{\small NUM ETD :} & \zsavepos{stdidbox}\multido{}{\nbBoxesStudentID}{~\boxStudentID} \else \\  \fi
+    \ifanonymousExamen%
+      \textbf{\small \No ANONYMAT~:} & \zsavepos{stdidbox}\multido{}{\nbBoxesAnonimityNumber}{~\boxStudentID}\\
+    \else
+      \textbf{\small NOM :} & \zsavepos{lastnamebox}\multido{}{\nbBoxesHeaderLine}{~\boxStudentID}\\
+      \textbf{\small PRÉNOM :} & \zsavepos{firstnamebox}\multido{}{\nbBoxesHeaderLine}{~\boxStudentID}\\
+      \ifheaderWithID \textbf{\small NUM ETD :} & \zsavepos{stdidbox}\multido{}{\nbBoxesStudentID}{~\boxStudentID} \else \\  \fi
+    \fi
   \end{tabular}
 }%
 \ifheaderWithID%
