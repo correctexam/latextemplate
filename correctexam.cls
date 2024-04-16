@@ -258,7 +258,8 @@
   "y": \fpeval{round(\the\paperheight/\pttocm-\zposy{answerbox\arabic{tempq}-\arabic{subquestioncounter}}/\pxtocm + (\zposy{answerbox\arabic{tempq}-\arabic{subquestioncounter}} - \zposy{answerbox\arabic{tempq}-\arabic{subquestioncounter}-b}) / \pxtocm + 0.2, 3)}, %
   "h": \fpeval{round((\zposy{answerbox\arabic{tempq}-\arabic{subquestioncounter}} - \zposy{answerbox\arabic{tempq}-\arabic{subquestioncounter}-b}) / \pxtocm, 3)}, %
   "w": \fpeval{round(\textwidth/\pttocm, 3)}, %
-  "p": \thepage%
+  "p": \thepage, %
+  "t": "qcm"%
   \}%
   )}}
   % \pdfinfo{/correctexam-answer-\arabic{tempq}-\arabic{subquestioncounter}-\arabic{tempe} %
