@@ -77,8 +77,12 @@
 \newcommand\pxtocm{\fpeval{\pxtopt*\pttocm}}
 
 \newcommand{\rectangle}[3][0pt]{{%
+\begingroup% begingroup permits to change locally fboxsep
+\setlength{\fboxsep}{0cm}%
 \adjustbox{cfbox=lightgray}{%
-\fboxsep=-\fboxrule\sbox0{}\wd0=#2\ht0=#3\dp0=#1\relax{\box0}}}}
+\fboxsep=-\fboxrule\sbox0{}\wd0=#2\ht0=#3\dp0=#1\relax{\box0}}%
+\endgroup%
+}}
 
 % \newcommand{\rectangle}[3]{\tikz \draw[#3] (0,0) rectangle (#1,#2);}
 
@@ -278,9 +282,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Answer zone (box)
 
-% Boxing each column
-\fboxsep=0pt
-
 % The color of the line dots
 \newcommand{\answerExamDotColor}{black}
 
@@ -289,9 +290,10 @@
 % Third argument: the number of lines
 % Fourth argument: the number of columns
 \newcommand{\answerExam}[4][black]{%
+\begingroup
+\setlength{\fboxsep}{0cm}%
 % Getting the count value of the current question
 \setcounter{tempq}{\arabic{Q}}%
-
 % setting the dot color
 \renewcommand{\answerExamDotColor}{#1}%
 %
@@ -344,14 +346,15 @@
 \end{minipage}%
 \global\booltrue{firstColomnBoxDone}%
 }
-  \global\boolfalse{firstColomnBoxDone}
-  % Gap between dots and next paragraph
-  \bigskip
-  % Setting back the default dot color
-  \renewcommand{\answerExamDotColor}{black}
-  % Incrementing the counter of answer boxes per question
-  \addtocounter{subquestioncounter}{1}
-}
+\global\boolfalse{firstColomnBoxDone}%
+% Gap between dots and next paragraph
+\bigskip%
+% Setting back the default dot color
+\renewcommand{\answerExamDotColor}{black}%
+% Incrementing the counter of answer boxes per question
+\addtocounter{subquestioncounter}{1}%
+\endgroup%
+} % \newcommand{\answerExam}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -405,6 +408,8 @@
 \newlength{\heightOfInlineAnswerBox}
 
 \newcommand{\inlineAnswerBox}[1][10]{%
+\begingroup%
+% \setlength{\fboxsep}{0cm}%
 % Getting the count value of the current question
 \setcounter{tempq}{\arabic{Q}}%
 %
@@ -434,6 +439,7 @@
 )}%
 %% Incrementing the sub question counter
 \addtocounter{subquestioncounter}{1}%
+\endgroup%
 }
 
 
