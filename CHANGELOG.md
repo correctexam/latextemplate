@@ -2,6 +2,9 @@
 
 ## Next release
 
+- Fixed: do not set fboxsep globally
+- Fixed: error with QCM metadata
+- Fixed: error with the y metadata value of inline answer zones
 - Class renamed to correctexam to avoid clashes
 - Add possibility to set a number of boxes in withid option
 - New env questionExamBlock
@@ -13,12 +16,12 @@
 
 ## v1.5.0
 
-### Changed 
+### Changed
 
 - fixed: not able to use vspace in answerExamContent
 - fixed: the provided example using answerExamContent was not good
 
-### Added 
+### Added
 - feat: the PDF metadata now contains exercise ID
 
 ##  v1.4.0

@@ -1,11 +1,11 @@
-% Options~:
+% Options :
 % withid : ajoute une ligne d'en-tête pour écrire l'identifiant de l'étudiant (si une valeur est donnée, cela limitera le nombre de cases)
 % anonymous : remplace les champs de nom et id par un numéro d'anonymat (si une valeur est donnée, cela limitera le nombre de cases)
 %
 % Nous recommandons de conserver l'option recto-verso car elle permet d'ajouter un en-tête spécifique (nom de l'étudiant) sur chaque nouvelle page.
 \documentclass[a4paper,twoside,withid=8]{correctexam}
 % \documentclass[a4paper,twoside,anonymous]{correctexam}
-% paquets latex déjà chargés~: graphicx, geometry, listings, lastpage, fancyhdr, xcolor, mathpazo, ifthen, xstring, qcm, enumitem, etoolbox, cleveref
+% paquets latex déjà chargés : graphicx, geometry, listings, lastpage, fancyhdr, xcolor, mathpazo, ifthen, xstring, qcm, enumitem, etoolbox, cleveref
 
 \usepackage[T1]{fontenc}
 \usepackage[final,activate={true,nocompatibility},kerning=true,spacing=true]{microtype}
@@ -24,10 +24,6 @@
 %\cfoot[\large\thepage~~/~~\pageref{LastPage}]{\large\thepage~~/~~\pageref{LastPage}}
 %
 % Ne modifiez pas \lhead, \rhead, \lfoot, \rfoot ni \chead, parce qu'ils sont utilisés pour détecter les identifiants
-
-% ATTENTION~: La classe "correctexam" assigne la longueur '0' à la variable 'fboxsep', ce qui casse l'espacement de la commande '\fbox'.
-% Cela affecte les paquets qui dépendent de '\fbox', comme 'minted' avec l'option 'frame'
-% Une solution de contournement pour 'minted' est de mettre 'framesep=5pt' pour remplacer l'espacement manquant.
 
 \title{\vspace*{-1cm}\huge Titre}
 \author{2022-2023\\[0.1cm]
@@ -176,7 +172,6 @@ Vous pouvez également écrire du texte dans des encadrés \inlineAnswerBox{}, q
 \begin{center}
 	\includegraphics{diag.pdf}%
 \end{center}
-}
 
 % Les questions peuvent également être créées avec un environnement 'questionExamBlock'.
 % Cela garantit que la question sera affichée sur la même page que le contenu de l'environnement.
@@ -187,6 +182,7 @@ Vous pouvez également écrire du texte dans des encadrés \inlineAnswerBox{}, q
 
 % Comme pour les questions ordinaires, il est possible de définir une étiquette sur un bloc 'questionExamBlock'.
 \begin{questionExamBlock}[q.otherlabel]{\lipsum[6][1]}
+
 	\answerExam[white]{1.5}{10}{1}
 \end{questionExamBlock}
 
