@@ -20,7 +20,7 @@
 % Pour modifier les dimensions par défaut de la page, principalement la gauche et la droite (attention, modifier les autres paramètres risque de casser la présentation) :
 % \geometry{bottom=0.5cm, top=-1cm, left=1.3cm, right=1.3cm, headheight=5cm, includefoot, includehead}
 
-% Pour personnaliser le pied de page~: 
+% Pour personnaliser le pied de page~:
 %\cfoot[\large\thepage~~/~~\pageref{LastPage}]{\large\thepage~~/~~\pageref{LastPage}}
 %
 % Ne modifiez pas \lhead, \rhead, \lfoot, \rfoot ni \chead, parce qu'ils sont utilisés pour détecter les identifiants
@@ -45,12 +45,12 @@ Sujet écrit sur \pageref{LastPage} pages
 \maketitle
 
 % La classe examen contient plusieurs commandes spécifiques~:
-% - "\exerciceExam{nombre}{titre}" : crée une section dédiée à un exercice. 
-%                                    Remplacez 'nombre' par le nombre de points de l'exercice. 
+% - "\exerciceExam{nombre}{titre}" : crée une section dédiée à un exercice.
+%                                    Remplacez 'nombre' par le nombre de points de l'exercice.
 %                                    Remplacez 'titre' par le titre de l'exercice (s'il n'y a pas de titre, n'oubliez pas de mettre {})
 % - "\questionExam{text}" : crée une question numérotée. Remplacez "texte" par l'entitulé de la question.
-% - "\begin{qcmExam} 
-%       (...) 
+% - "\begin{qcmExam}
+%       (...)
 %    \end{qcmExam}" : crée un environement QCM
 
 
@@ -95,7 +95,7 @@ N'oubliez pas de mettre votre nom sur chaque page.}%
 % Les questions peuvent avoir des étiquettes~:
 \questionExam[q.mylabel]{\lipsum[1][3]}
 
-% Pour faire référence à une étiquette 
+% Pour faire référence à une étiquette
 \textbf{Référence à \cref{q.mylabel}}
 % Avertissement~: il y a un problème lors de l'utilisation de l'étiquette de la question et de la section/sous-section.
 

@@ -247,7 +247,7 @@
 \setlist[qcmExam,1]{%
   label={\large $\square$ \protect\stepcounter{qcmItems}},
   %
-  before={\protect\setcounter{qcmItems}{0}\protect\setcounter{tempq}{\arabic{Q}}\protect\addtocounter{tempq}{-1}\normalfont\zsavepos{answerbox\arabic{tempq}-\arabic{subquestioncounter}}},
+  before={\protect\setcounter{qcmItems}{0}\protect\setcounter{tempq}{\arabic{Q}}\normalfont\zsavepos{answerbox\arabic{tempq}-\arabic{subquestioncounter}}},
   %
   after={%
   \zsavepos{answerbox\arabic{tempq}-\arabic{subquestioncounter}-b}%
@@ -312,7 +312,7 @@
 \label{correctexam-\arabic{tempq}-\arabic{subquestioncounter}}%
 %
 \noindent\ifbool{firstColomnBoxDone}{}{\zsavepos{answerbox\arabic{tempq}-\arabic{subquestioncounter}}}\fbox{\sbox{0}{\parbox{\textwidth}{%
-  % Setting the seelcted color
+  % Setting the selected color
   \color{\answerExamDotColor}%
   % Provides a larger gap between the preceding paragraph and the dots
   \noindent\rule{0pt}{1.5\baselineskip}%
@@ -425,7 +425,7 @@
 (%
 \{ %
   "x": \fpeval{round(\zposx{answerbox\arabic{tempq}-\arabic{subquestioncounter}}/\pxtocm, 3)}, %
-  "y": \fpeval{round(\the\paperheight/\pttocm-\zposy{answerbox\arabic{tempq}-\arabic{subquestioncounter}}/\pxtocm + 0.33, 3)}, %
+  "y": \fpeval{round(\the\paperheight/\pttocm-\zposy{answerbox\arabic{tempq}-\arabic{subquestioncounter}}/\pxtocm + 0.15, 3)}, %
   "w": \fpeval{round(\widthOfInlineAnswerBox/\pttocm, 3)}, %
   "h": \fpeval{round(\heightOfInlineAnswerBox/\pttocm, 3)}, %
   "p": \getpagerefnumber{correctexam-\arabic{tempq}-\arabic{subquestioncounter}}%
