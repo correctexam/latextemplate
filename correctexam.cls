@@ -8,12 +8,11 @@
 \LoadClass{article}
 
 \newif\ifheaderWithID
+\newif\ifanonymousExam
+
 \newcommand{\nbBoxesStudentID}{}
 
-\newif\ifanonymousExamen
-\newcommand{\nbBoxesAnonimityNumber}{}
-
-\DeclareOptionX{anonymous}[4]{\anonymousExamentrue\renewcommand{\nbBoxesAnonimityNumber}{#1}}
+\DeclareOptionX{anonymous}[4]{\anonymousExamtrue\renewcommand{\nbBoxesStudentID}{#1}}
 \DeclareOptionX{withid}[19]{\headerWithIDtrue\renewcommand{\nbBoxesStudentID}{#1}}
 \ProcessOptionsX
 
@@ -40,6 +39,7 @@
 \RequirePackage{refcount}
 % \RequirePackage{tikz}
 \RequirePackage{titlesec}
+\RequirePackage{minibox}
 
 \titlespacing*{\section} {0pt}{0ex}{0ex}
 
@@ -76,11 +76,13 @@
 % Conversion pixel to cm
 \newcommand\pxtocm{\fpeval{\pxtopt*\pttocm}}
 
-\newcommand{\rectangle}[3][0pt]{{%
+\newcommand{\boxID}[1][0pt]{{%
 \begingroup% begingroup permits to change locally fboxsep
-\setlength{\fboxsep}{0cm}%
-\adjustbox{cfbox=lightgray}{%
-\fboxsep=-\fboxrule\sbox0{}\wd0=#2\ht0=#3\dp0=#1\relax{\box0}}%
+\setlength{\fboxrule}{0.1mm}%
+\setlength{\fboxsep}{0mm}%
+\adjustbox{cfbox=lightgray, margin=0mm 1mm 0mm 1mm}{%
+{\vphantom{\minibox[frame]{A}}\hspace{0.7cm}}%
+}%
 \endgroup%
 }}
 
@@ -91,25 +93,25 @@
 
 \newlength{\heighOfIdBox}
 \newlength{\widthOfIdBox}
+\newlength{\widthOfNameBox}
 \newlength{\mylentt}
-% \newcommand{\boxStudentID}{\fcolorbox{lightgray}{white}{\fontsize{19}{21}\selectfont\strut~~~~}}
-\newcommand{\boxStudentID}{\rectangle{0.7cm}{0.8cm}}
 \newcommand{\nbBoxesHeaderLine}{19}
 
 \newcommand{\nameheader}{%
 %% Computing the dimensions of ID boxes
-\settototalheight{\heighOfIdBox}{\boxStudentID}%
-\setlength{\widthOfIdBox}{\widthof{\multido{}{\nbBoxesHeaderLine}{~\boxStudentID}}}%
+\settototalheight{\heighOfIdBox}{\boxID}%
+\setlength{\widthOfNameBox}{\widthof{\multido{}{\nbBoxesHeaderLine}{~\boxID}}}%
+\setlength{\widthOfIdBox}{\widthof{\multido{}{\nbBoxesStudentID}{~\boxID}}}%
 \large%
 {%
   \setlength{\tabcolsep}{0.2em}%
   \begin{tabular}{rl}
-    \ifanonymousExamen%
-      \textbf{\small \No ANONYMAT~:} & \zsavepos{stdidbox}\multido{}{\nbBoxesAnonimityNumber}{~\boxStudentID}\\
+    \ifanonymousExam%
+      \textbf{\small \No ANONYMAT~:} & \zsavepos{stdidbox}\multido{}{\nbBoxesStudentID}{~\boxID}\\
     \else
-      \textbf{\small NOM :} & \zsavepos{lastnamebox}\multido{}{\nbBoxesHeaderLine}{~\boxStudentID}\\
-      \textbf{\small PRÉNOM :} & \zsavepos{firstnamebox}\multido{}{\nbBoxesHeaderLine}{~\boxStudentID}\\
-      \ifheaderWithID \textbf{\small NUM ETD :} & \zsavepos{stdidbox}\multido{}{\nbBoxesStudentID}{~\boxStudentID} \else \\  \fi
+      \textbf{\small NOM :} & \zsavepos{lastnamebox}\multido{}{\nbBoxesHeaderLine}{~\boxID}\\
+      \textbf{\small PRÉNOM :} & \zsavepos{firstnamebox}\multido{}{\nbBoxesHeaderLine}{~\boxID}\\
+      \ifheaderWithID \textbf{\small NUM ETD :} & \zsavepos{stdidbox}\multido{}{\nbBoxesStudentID}{~\boxID} \else \\  \fi
     \fi
   \end{tabular}
 }%
@@ -119,9 +121,9 @@
     (%
     \{%
     "x": \fpeval{round(\zposx{stdidbox}/\pxtocm, 3)}, %
-    "y": \fpeval{round((\the\paperheight/\pttocm-\zposy{stdidbox}/\pxtocm) + 0.025, 3)}, %
-    "w": \fpeval{round(\widthOfIdBox/\pttocm + 0.35, 3)}, %
-    "h": \fpeval{round(\heighOfIdBox/\pttocm + 0.1, 3)}, %
+    "y": \fpeval{round((\the\paperheight/\pttocm-\zposy{stdidbox}/\pxtocm) + 0.35, 3)}, %
+    "w": \fpeval{round(\widthOfIdBox/\pttocm + 0.45, 3)}, %
+    "h": \fpeval{round(\heighOfIdBox/\pttocm, 3)}, %
     "p": \thepage%
     \}%
     )}%
@@ -140,9 +142,9 @@
   (%
   \{ %
   "x": \fpeval{round(\zposx{lastnamebox}/\pxtocm, 3)}, %
-  "y": \fpeval{round((\the\paperheight/\pttocm-\zposy{lastnamebox}/\pxtocm) + 0.025, 3)}, %
-  "w": \fpeval{round(\widthOfIdBox/\pttocm + 0.35, 3)}, %
-  "h": \fpeval{round(\heighOfIdBox/\pttocm + 0.1, 3)}, %
+  "y": \fpeval{round((\the\paperheight/\pttocm-\zposy{lastnamebox}/\pxtocm) + 0.35, 3)}, %
+  "w": \fpeval{round(\widthOfNameBox/\pttocm + 0.45, 3)}, %
+  "h": \fpeval{round(\heighOfIdBox/\pttocm, 3)}, %
   "p": \thepage%
   \}%
   )}%
@@ -150,9 +152,9 @@
   (%
   \{ %
   "x": \fpeval{round(\zposx{firstnamebox}/\pxtocm, 3)}, %
-  "y": \fpeval{round((\the\paperheight/\pttocm-\zposy{firstnamebox}/\pxtocm) + 0.025, 3)}, %
-  "w": \fpeval{round(\widthOfIdBox/\pttocm + 0.35, 3)}, %
-  "h": \fpeval{round(\heighOfIdBox/\pttocm + 0.1, 3)}, %
+  "y": \fpeval{round((\the\paperheight/\pttocm-\zposy{firstnamebox}/\pxtocm) + 0.35, 3)}, %
+  "w": \fpeval{round(\widthOfNameBox/\pttocm + 0.45, 3)}, %
+  "h": \fpeval{round(\heighOfIdBox/\pttocm, 3)}, %
   "p": \thepage%
   \}%
   )}%

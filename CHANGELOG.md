@@ -2,6 +2,7 @@
 
 ## Next release
 
+- Fixed: names and id boxes now aligned with their title (header)
 - Fixed: do not set fboxsep globally
 - Fixed: error with QCM metadata
 - Fixed: error with the y metadata value of inline answer zones
