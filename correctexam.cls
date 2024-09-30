@@ -40,10 +40,27 @@
 % \RequirePackage{tikz}
 \RequirePackage{titlesec}
 \RequirePackage{minibox}
+\RequirePackage{babel}
 
 \titlespacing*{\section} {0pt}{0ex}{0ex}
 
 \linespread{1.05}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% I12N
+\newcommand{\exercisename}{Exercise}
+\newcommand{\studentlastname}{LAST NAME:}
+\newcommand{\studentfirstname}{FIRST NAME:}
+\newcommand{\studentidname}{STUDENT ID:}
+\newcommand{\studentanonname}{ANONYMOUS ID:}
+
+\addto\captionsfrench{
+  \renewcommand{\exercisename}{Exercice}
+  \renewcommand{\studentlastname}{NOM~:}
+  \renewcommand{\studentfirstname}{PRÉNOM~:}
+  \renewcommand{\studentidname}{\No ÉTUDIANT~:}
+  \renewcommand{\studentanonname}{\No ANONYMAT~:}
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Document geometry
@@ -107,11 +124,11 @@
   \setlength{\tabcolsep}{0.2em}%
   \begin{tabular}{rl}
     \ifanonymousExam%
-      \textbf{\small \No ANONYMAT~:} & \zsavepos{stdidbox}\multido{}{\nbBoxesStudentID}{~\boxID}\\
+      \textbf{\small\studentanonname} & \zsavepos{stdidbox}\multido{}{\nbBoxesStudentID}{~\boxID}\\
     \else
-      \textbf{\small NOM :} & \zsavepos{lastnamebox}\multido{}{\nbBoxesHeaderLine}{~\boxID}\\
-      \textbf{\small PRÉNOM :} & \zsavepos{firstnamebox}\multido{}{\nbBoxesHeaderLine}{~\boxID}\\
-      \ifheaderWithID \textbf{\small NUM ETD :} & \zsavepos{stdidbox}\multido{}{\nbBoxesStudentID}{~\boxID} \else \\  \fi
+      \textbf{\small\studentlastname{}} & \zsavepos{lastnamebox}\multido{}{\nbBoxesHeaderLine}{~\boxID}\\
+      \textbf{\small\studentfirstname{}} & \zsavepos{firstnamebox}\multido{}{\nbBoxesHeaderLine}{~\boxID}\\
+      \ifheaderWithID \textbf{\small\studentidname{}} & \zsavepos{stdidbox}\multido{}{\nbBoxesStudentID}{~\boxID} \else \\  \fi
     \fi
   \end{tabular}
 }%
@@ -235,7 +252,7 @@
   \StrLen{#2}[\mystringlen]%
   \ifthenelse{\mystringlen > 0}{\def\@temp{-- #2}}{\def\@temp{}}%
   \vspace{0.3cm}
-  \section*{Exercice \arabic{QE} \@temp{} ($\approx$ #1 points)}
+  \section*{\exercisename{} \arabic{QE} \@temp{} ($\approx$ #1 points)}
   \setcounter{tempe}{\arabic{QE}}%
   \stepcounter{QE}%
   \vspace{0.3cm}
