@@ -10,7 +10,7 @@
 \newif\ifheaderWithID
 \newif\ifanonymousExam
 
-\newcommand{\nbBoxesStudentID}{}
+\newcommand{\nbBoxesStudentID}{0}
 
 \DeclareOptionX{anonymous}[4]{\anonymousExamtrue\renewcommand{\nbBoxesStudentID}{#1}}
 \DeclareOptionX{withid}[19]{\headerWithIDtrue\renewcommand{\nbBoxesStudentID}{#1}}
